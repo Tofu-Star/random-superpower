@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-import random
 
 def formulateMessage(url):
     page = urlopen(url)
@@ -21,39 +20,31 @@ def formulateMessage(url):
     return response
 
 def randomSuperpower(category = None):
-    url = "https://powerlisting.fandom.com/wiki/Special:Random"
-
-    response = formulateMessage(url)
-
-    return response
-
-def randByCategory(category):
-    url = "https://powerlisting.fandom.com/wiki/Special:RandomInCategory/"
-    response = "Sorry, I didn't understand that command! \nPlease choose one of the nine categories\n(Almighty, Enhancements, Magical Powers, Manipulations, Meta Powers, Physiology, Psychic Powers or Science Powers)\n or type !-superpower, without the -, to roll a truly random power!\nType !-help, without the -, for more info!"
+    url = "https://powerlisting.fandom.com/wiki/"
 
     #Python doesn't have a switch case statement
     #So this will have to do
     #But it doesn't look great
     if(category == "almighty"):
-        url += "Almighty_Powers"
+        url += "Special:RandomInCategory/Almighty_Powers"
     elif(category == "construct"):
-        url += "Constructs"
+        url += "Special:RandomInCategory/Constructs"
     elif(category == "enhancement"):
-        url += "Enhancements"
+        url += "Special:RandomInCategory/Enhancements"
     elif(category == "magical"):
-        url += "Magical_Powers"
+        url += "Special:RandomInCategory/Magical_Powers"
     elif(category == "manipulation"):
-        url += "Manipulations"
+        url += "Special:RandomInCategory/Manipulations"
     elif(category == "meta"):
-        url += "Meta_Powers"
+        url += "Special:RandomInCategory/Meta_Powers"
     elif(category == "physiology"):
-        url += "Physiology"
+        url += "Special:RandomInCategory/Physiology"
     elif(category == "psychic"):
-        url += "Psychic_Powers"
+        url += "Special:RandomInCategory/Psychic_Powers"
     elif(category == "science"):
-        url += "Science_Powers"
+        url += "Special:RandomInCategory/Science_Powers"
     else:
-        return response
+        url += "Special:Random"
 
     response = formulateMessage(url)
 
