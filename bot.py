@@ -24,12 +24,12 @@ async def on_ready():
 
 @slash.slash(name="Superpower", 
 description="Roll a random superpower!")
-async def superpower(ctx):
-    response = rand_superpower_code.randomSuperpower()
+async def superpower(ctx, category = ""):
+    response = rand_superpower_code.randomSuperpower(category=category)
     await ctx.send(response)
 
 @bot.command(name='superpower')
-async def roll_superpower(ctx, category = None):
+async def roll_superpower(ctx, category = ""):
     category = category.lower().strip()
 
     response = rand_superpower_code.randomSuperpower(category=category)
@@ -52,5 +52,23 @@ To roll from a specific category, you can type the following after +superpower:
 'psychic' for psychic powers.
 'science' for science powers."""
     await ctx.send(response)
+
+#/help
+@slash.slash(name="Help",
+description="Displays the list of available categories")
+async def slash_help(ctx):
+    response= """Thank you for using Random Superpower Bot.\n
+    In order to roll the slash command with a specific category, please type one of the
+    available categories after the command.\n
+    The available categories are as follows:
+    'almighty' for almighty powers.
+    'construct' for constructions.
+    'enhancement' for enhancements.
+    'magical' for magical powers.
+    'manipulation' for manipulations.
+    'meta' for meta powers.
+    'physiology' for physiologies
+    'psychic' for psychic powers.
+    'science' for science powers."""
 
 bot.run(TOKEN)
