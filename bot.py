@@ -54,7 +54,7 @@ To roll from a specific category, you can type the following after +superpower:
     await ctx.send(response)
 
 #/help
-@slash.slash(name="Help",
+@slash.slash(name="help",
 description="Displays the list of available categories")
 async def slash_help(ctx):
     response= """Thank you for using Random Superpower Bot.\n
@@ -70,5 +70,7 @@ async def slash_help(ctx):
     'physiology' for physiologies
     'psychic' for psychic powers.
     'science' for science powers."""
+
+    await ctx.send(response)
 
 bot.run(TOKEN)
